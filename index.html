@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <!-- Вы разрабатываете приложение для отображения и сортировки списка товаров. У вас есть массив объектов products, где каждый объект представляет товар с его названием и ценой. Вам необходимо отобразить список товаров и предоставить пользователю возможность сортировать товары по цене (по возрастанию и по убыванию). -->
+
+    <div id="app">
+        <div class="products" v-for="product in products" :key="product.id">
+            <p class="product">{{ product.name }} : {{ product.price }}</p>
+        </div>
+        <button @click="ascendingSort" class="sort">По возрастанию</button>
+        <button @click="descendingSort" class="sort">По убыванию</button>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+    <script>
+        new Vue({
+            el: '#app',
+            data: {
+                products: [
+                    {
+                        name: 'product1',
+                        price: 100000,
+                    },
+                    {
+                        name: 'product2',
+                        price: 1000,
+                    },
+                    {
+                        name: 'product3',
+                        price: 100,
+                    },
+                    {
+                        name: 'product4',
+                        price: 1,
+                    },
+                    {
+                        name: 'product5',
+                        price: 10000,
+                    },
+                    {
+                        name: 'product6',
+                        price: 10,
+                    },
+                    {
+                        name: 'product7',
+                        price: 1000,
+                    },
+                ]
+            },
+            methods: {
+                ascendingSort() {
+                    this.products.sort((a, b) => a.price - b.price)
+                },
+                descendingSort() {
+                    this.products.sort((a, b) => b.price - a.price)
+                },
+            }
+        });
+    </script>
+
+</body>
+
+</html>
